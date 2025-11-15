@@ -70,7 +70,7 @@ echo "🔁 Rebuilding NixOS..."
 sudo nixos-rebuild switch --flake .
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
+current=$(nixos-rebuild list-generations | grep current | awk '{print $1, $2, $3}')
 
 # Commit with metadata message
 git commit -am "$current"
