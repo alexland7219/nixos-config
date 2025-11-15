@@ -70,7 +70,16 @@ echo "🔁 Rebuilding NixOS..."
 sudo nixos-rebuild switch --flake .
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current | awk '{print $1, $2, $3}')
+current=$(nixos-rebuild list-generations | grep current | awk '{
+    split($3, d, "-"); month = d[2] + 0;
+
+    if (month == 12 || month == 1 || month == 2) emoji="❄️";
+    else if (month == 3 || month == 4 || month == 5) emoji="🌺";
+    else if (month == 6 || month == 7 || month == 8) emoji="☀️";
+    else emoji="🍂";
+
+    print emoji " Generation #"$1" on "$3
+}')
 
 # Commit with metadata message
 git commit -am "$current"
