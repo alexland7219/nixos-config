@@ -11,27 +11,22 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
-      inherit (self) outputs;
+      system = "x86_64-linux";
+      unstablePkgs = inputs.nixpkgsUnstable.legacyPackages.${system};
     in
     {
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         Termina = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs unstablePkgs; };
           modules = [ ./nixos/configuration.nix ];
         };
       };
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
     };
 
 }

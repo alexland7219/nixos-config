@@ -4,10 +4,10 @@
 
 {
   inputs,
-  outputs,
   config,
   lib,
   pkgs,
+  unstablePkgs,
   ...
 }:
 
@@ -23,7 +23,6 @@
   ];
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs outputs; };
     users = {
       # Importing home-manager configuration
       link = import ../home-manager/home.nix;
@@ -131,8 +130,8 @@
       wkhtmltopdf
       cbqn
       alttpr-opentracker
-      inputs.nixpkgsUnstable.legacyPackages.${pkgs.system}.qusb2snes
-      inputs.nixpkgsUnstable.legacyPackages.${pkgs.system}.uiua-unstable
+      unstablePkgs.qusb2snes
+      unstablePkgs.uiua-unstable
     ];
   };
 
