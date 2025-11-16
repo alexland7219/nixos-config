@@ -127,6 +127,7 @@
       discord
       element-desktop
       libreoffice-fresh
+      simulide
       wkhtmltopdf
       cbqn
       alttpr-opentracker
