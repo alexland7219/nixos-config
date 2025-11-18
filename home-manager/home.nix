@@ -35,7 +35,7 @@
 
       font = {
         size = 10.0;
-        normal.family = "JetBrains Mono";
+        normal.family = "JetBrainsMono Nerd Font";
       };
 
     };
@@ -50,6 +50,11 @@
     initExtra = ''
       export PATH="$HOME/nixos-config/scripts:$PATH"
     '';
+  };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
   };
 
   dconf.settings = {

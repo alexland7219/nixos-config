@@ -153,6 +153,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    emacs
     wget
     alacritty
     htop
@@ -231,6 +232,7 @@
     noto-fonts-cjk-sans
     noto-fonts
     noto-fonts-lgc-plus
+    nerd-fonts.jetbrains-mono
   ];
 
   programs.gnupg.agent = {
