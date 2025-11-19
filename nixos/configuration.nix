@@ -54,7 +54,15 @@
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+    desktopManager.gnome = {
+      enable = true;
+
+      # On machine Hyrule the interface needs to be scaled by 0.9
+      extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
+        [org/gnome/desktop/interface]
+        text-scaling-factor=0.9
+      '';
+    };
   };
 
   services.xserver.xkb = {
