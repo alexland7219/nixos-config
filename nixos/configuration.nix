@@ -153,7 +153,6 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    emacs
     wget
     alacritty
     htop

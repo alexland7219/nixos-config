@@ -22,7 +22,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         *)
-            echo "❔ Unknown option: $1"
+            echo "\e[33mUnknown option: $1\e[0m"
             exit 1
             ;;
     esac
@@ -35,7 +35,7 @@ fi
 
 # In case the editor failed
 if [[ $? -ne 0 ]]; then
-    echo "⛔ Aborting rebuild."
+    echo -e "\e[31mAborting rebuild...\e[0m"
     exit 0
 fi
 
@@ -45,7 +45,7 @@ fi
 
 # In case the editor failed
 if [[ $? -ne 0 ]]; then
-    echo "⛔ Aborting rebuild."
+    echo -e "\e[31mAborting rebuild...\e[0m"
     exit 0
 fi
 
@@ -53,10 +53,11 @@ pushd "$HOME/nixos-config"
 
 # Detect if any changes were made wrt the last commit
 if [[ -z $(git status --porcelain) ]]; then
-    echo "⏸️ No changes detected. Aborting rebuild."
+    echo -e "\e[33mNo changes detected. Aborting rebuild.\e[0m"
+    exit 0
 fi
 
-echo "🖌️  Formatting..."
+echo -e "\e[36m== Formatting ==\e[0m"
 
 # Format
 nix fmt **/*.nix
@@ -70,15 +71,15 @@ echo "🔁 Rebuilding NixOS..."
 sudo nixos-rebuild switch --flake .
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current | awk '{
-    split($3, d, "-"); month = d[2] + 0;
+hname=$(hostname | cut -c1)
+current=$(nixos-rebuild list-generations | grep current | awk -v X="$hname" '
+{
+    split($3, d, "-")
+    m["1"]="Jan"; m["2"]="Feb"; m["3"]="Mar"; m["4"]="Apr"
+    m["5"]="May"; m["6"]="Jun"; m["7"]="Jul"; m["8"]="Aug"
+    m["9"]="Sep"; m["10"]="Oct"; m["11"]="Nov"; m["12"]="Dec"
 
-    if (month == 12 || month == 1 || month == 2) emoji="❄️";
-    else if (month == 3 || month == 4 || month == 5) emoji="🌺";
-    else if (month == 6 || month == 7 || month == 8) emoji="☀️";
-    else emoji="🍂";
-
-    print emoji " Generation #"$1" on "$3
+    printf "Gen #%s-%s on %s. %d, %d\n", $1, X, m[d[2]+0], d[3]+0, d[1]
 }')
 
 # Commit with metadata message
