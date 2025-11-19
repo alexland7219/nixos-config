@@ -11,7 +11,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs =
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       unstablePkgs = inputs.nixpkgsUnstable.legacyPackages.${system};
@@ -21,7 +22,18 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
         Termina = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs unstablePkgs; };
+          specialArgs = {
+            inherit inputs unstablePkgs;
+            hostname = "Termina";
+          };
+          modules = [ ./nixos/configuration.nix ];
+        };
+
+        Hyrule = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs unstablePkgs;
+            hostname = "Hyrule";
+          };
           modules = [ ./nixos/configuration.nix ];
         };
       };

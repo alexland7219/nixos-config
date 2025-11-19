@@ -8,12 +8,13 @@
   lib,
   pkgs,
   unstablePkgs,
+  hostname,
   ...
 }:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    (./. + "/hardware-${hostname}.nix")
     # Importing home-manager's NixOS module
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -23,9 +24,11 @@
   ];
 
   home-manager = {
+    useGlobalPkgs = true;
+    extraSpecialArgs = { inherit unstablePkgs; };
     users = {
       # Importing home-manager configuration
-      link = import ../home-manager/home.nix;
+      alex = import ../home-manager/home.nix;
     };
   };
 
@@ -40,7 +43,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "Termina";
+  networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Amsterdam";
@@ -88,51 +91,16 @@
     LC_ALL = "";
   };
 
-  # Programs and fonts
+  # Users and fonts
 
-  users.users.link = {
+  users.users.alex = {
     isNormalUser = true;
+    description = "Alexandre Ros";
     extraGroups = [
       "wheel"
       "networkmanager"
       "plugdev"
       "dialout"
-    ];
-    packages = with pkgs; [
-      tree
-      git
-      mullvad-vpn
-      qbittorrent
-      dolphin-emu
-      vscodium
-      magic-wormhole
-      vlc
-      keepassxc
-      texmaker
-      cbc
-      bison
-      anki-bin
-      yt-dlp
-      spotdl
-      android-tools
-      mpv
-      exercism
-      tauon
-      flutter
-      telegram-desktop
-      kdePackages.okular
-      kdePackages.poppler
-      swi-prolog
-      virt-viewer
-      discord
-      element-desktop
-      libreoffice-fresh
-      simulide
-      wkhtmltopdf
-      cbqn
-      alttpr-opentracker
-      unstablePkgs.qusb2snes
-      unstablePkgs.uiua-unstable
     ];
   };
 
@@ -147,80 +115,22 @@
     };
   };
 
-  programs.thunderbird.enable = true;
-
   programs.steam.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
+    git
     wget
     alacritty
     htop
-    libgcc
     file
-    calibre
-    gcc15
-    lua
-    zulu23
-    erlang
     killall
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     hplip
     ares-cli
     syncthing
-    libxkbcommon
     libpkcs11-dnie
-
-    # Retroarch cores
-    (retroarch.withCores (
-      cores: with cores; [
-        snes9x
-      ]
-    ))
-
-    # Python 3.11 packages
-    (python313.withPackages (
-      ps: with ps; [
-        pip
-        numpy
-        requests
-        matplotlib
-        requests-toolbelt
-        pyyaml
-        rich
-        pydantic
-        pandas
-        python-telegram-bot
-        discordpy
-        geopandas
-        python-dotenv
-      ]
-    ))
-
-    # Haskell packages
-    haskellPackages.ghc
-    haskellPackages.cabal-install
-    haskellPackages.hlint
-
-    # LaTeX packages
-    (texlive.combine {
-      inherit (texlive)
-        scheme-medium
-        fira
-        geometry
-        xcolor
-        enumitem
-        xhfill
-        soul
-        titlesec
-        lastpage
-        fancyhdr
-        fontawesome5
-        fontaxes
-        hyperref
-        ;
-    })
   ];
 
   fonts.packages = with pkgs; [
@@ -247,9 +157,9 @@
 
   services.syncthing = {
     enable = true;
-    user = "link";
-    dataDir = "/home/link";
-    configDir = "/home/link/.config/syncthing";
+    user = "alex";
+    dataDir = "/home/alex";
+    configDir = "/home/alex/.config/syncthing";
   };
 
   system.stateVersion = "25.05";

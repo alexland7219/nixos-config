@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-# --home    will open home.nix
-# --config  will open configuration.nix
-#           by default, no file is opened
+# --home          will open home.nix
+# --config        will open configuration.nix
+# --hostname=NAME will set the hostname name, otherwise it will run hostname
+#                 by default, no file is opened
 
 # Exist on any command error
 set -e
 
 HOME_FLAG=false
 CONFIG_FLAG=false
+HOSTNAME=$(hostname)
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -19,6 +21,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --config)
             CONFIG_FLAG=true
+            shift
+            ;;
+        --hostname=*)
+            HOSTNAME="${1#*=}"
             shift
             ;;
         *)
@@ -68,10 +74,11 @@ git diff -U0 '*.nix'
 echo "🔁 Rebuilding NixOS..."
 
 # Rebuild
-sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --flake .#$HOSTNAME
 
 # Get current generation metadata
-hname=$(hostname | cut -c1)
+hname="${HOSTNAME:0:1}"
+
 current=$(nixos-rebuild list-generations | grep current | awk -v X="$hname" '
 {
     split($3, d, "-")
