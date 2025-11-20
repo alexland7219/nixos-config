@@ -5,7 +5,7 @@
 # --hostname=NAME will set the hostname name, otherwise it will run hostname
 #                 by default, no file is opened
 
-# Exist on any command error
+# Exit on any command error
 set -e
 
 HOME_FLAG=false
@@ -56,12 +56,6 @@ if [[ $? -ne 0 ]]; then
 fi
 
 pushd "$HOME/nixos-config"
-
-# Detect if any changes were made wrt the last commit
-if [[ -z $(git status --porcelain) ]]; then
-    echo -e "\e[33mNo changes detected. Aborting rebuild.\e[0m"
-    exit 0
-fi
 
 echo -e "\e[36m== Formatting ==\e[0m"
 
