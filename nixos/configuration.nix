@@ -24,6 +24,7 @@
   ];
 
   home-manager = {
+    backupFileExtension = "bak";
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit unstablePkgs; };
     users = {
