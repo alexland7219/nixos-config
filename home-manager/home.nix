@@ -107,6 +107,7 @@
 
   programs.jujutsu = {
     enable = true;
+    package = unstablePkgs.jujutsu;
     settings = {
       user.email = "alexland7219@gmail.com";
       user.name = "Alexandre Ros";
