@@ -184,7 +184,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "tokyo_night";
+    theme = "alabaster_dark";
 
     settings = {
       window = {
