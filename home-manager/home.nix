@@ -112,6 +112,7 @@
       user.email = "alexland7219@gmail.com";
       user.name = "Alexandre Ros";
       ui.paginate = "never";
+      ui.default-command = "log";
       colors = {
         author = "yellow";
         change_id = "#EC0868";
