@@ -30,6 +30,7 @@
     dolphin-emu
     vlc
     keepassxc
+    openssl
     texmaker
     bison
     anki-bin
