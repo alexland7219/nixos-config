@@ -39,6 +39,7 @@
     android-tools
     mpv
     exercism
+    gimp
     tauon
     flutter
     telegram-desktop
