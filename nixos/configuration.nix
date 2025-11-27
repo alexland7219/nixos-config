@@ -136,6 +136,7 @@
     killall
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
+    wireguard-tools
     hplip
     ares-cli
     syncthing
