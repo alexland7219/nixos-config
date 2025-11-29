@@ -52,18 +52,15 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  services.xserver = {
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome = {
-      enable = true;
 
-      # On machine Hyrule the interface needs to be scaled by 0.9
-      extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
-        [org/gnome/desktop/interface]
-        text-scaling-factor=0.9
-      '';
-    };
+    # On machine Hyrule the interface needs to be scaled by 0.9
+    extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
+      [org/gnome/desktop/interface]
+      text-scaling-factor=0.9
+    '';
   };
 
   services.xserver.xkb = {
@@ -93,9 +90,9 @@
   environment.variables = {
     LANG = "en_US.UTF-8";
     LC_NUMERIC = "en_US.UTF-8";
-    LC_TIME = "de_DE.UTF-8";
-    LC_PAPER = "de_DE.UTF-8";
-    LC_MEASUREMENT = "de_DE.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
+    LC_PAPER = "en_GB.UTF-8";
+    LC_MEASUREMENT = "en_GB.UTF-8";
     LC_MONETARY = "de_DE.UTF-8";
     LC_ALL = "";
   };
@@ -137,9 +134,9 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     wireguard-tools
+    man-pages
     hplip
     ares-cli
-    syncthing
     libpkcs11-dnie
   ];
 
@@ -152,6 +149,7 @@
     noto-fonts
     noto-fonts-lgc-plus
     nerd-fonts.jetbrains-mono
+    maple-mono.variable
   ];
 
   programs.gnupg.agent = {
@@ -164,13 +162,6 @@
   # services.openssh.enable = true;
   services.mullvad-vpn.enable = true;
   services.pcscd.enable = true;
-
-  services.syncthing = {
-    enable = true;
-    user = "alex";
-    dataDir = "/home/alex";
-    configDir = "/home/alex/.config/syncthing";
-  };
 
   system.stateVersion = "25.05";
 }

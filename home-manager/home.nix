@@ -6,7 +6,6 @@
 }:
 
 {
-  home.stateVersion = "24.05";
 
   home.sessionVariables.EDITOR = "vim";
 
@@ -24,7 +23,7 @@
     calibre
     gcc15
     lua
-    zulu24
+    zulu
     erlang
     qbittorrent
     dolphin-emu
@@ -53,7 +52,7 @@
     wkhtmltopdf
     cbqn
     alttpr-opentracker
-    unstablePkgs.qusb2snes
+    qusb2snes
     unstablePkgs.uiua-unstable
 
     # Retroarch cores
@@ -107,6 +106,27 @@
     })
   ];
 
+  programs.alacritty = {
+    enable = true;
+    theme = "github_dark";
+
+    settings = {
+      window = {
+        padding = {
+          x = 8;
+          y = 8;
+        };
+        opacity = 0.9;
+      };
+
+      font = {
+        size = 10.0;
+        normal.family = "JetBrains Mono";
+      };
+
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     package = unstablePkgs.jujutsu;
@@ -115,15 +135,34 @@
       user.name = "Alexandre Ros";
       ui.paginate = "never";
       ui.default-command = "log";
-      colors = {
-        author = "yellow";
-        change_id = "#EC0868";
-        "working_copy author" = "yellow";
-        "working_copy change_id" = "#EC0868";
-      };
+      #colors = {
+      #  author = "yellow";
+      #  change_id = "#EC0868";
+      #  "working_copy author" = "yellow";
+      #  "working_copy change_id" = "#EC0868";
+      #};
       template-aliases = {
         "format_short_signature(signature)" = "signature.email().local()";
       };
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    settings = {
+      #custom.jj-revision = {
+      #  description = "The current JJ status";
+      #  when = "jj --ignore-working-copy root";
+      #  command = ''
+      #    jj log -r @ -n 1 --ignore-working-copy -G --color always -T '
+      #      separate(" ",
+      #        change_id.shortest(4),
+      #        if(local_bookmarks, local_bookmarks)
+      #      )
+      #    '
+      #  '';
+      #};
     };
   };
 
@@ -181,29 +220,10 @@
 
   programs.git = {
     enable = true;
-    userName = "Alexandre Ros";
-    userEmail = "alexland7219@gmail.com";
-    extraConfig.core.editor = "vim";
-  };
-
-  programs.alacritty = {
-    enable = true;
-    theme = "alabaster_dark";
-
     settings = {
-      window = {
-        padding = {
-          x = 8;
-          y = 8;
-        };
-        opacity = 0.9;
-      };
-
-      font = {
-        size = 10.0;
-        normal.family = "JetBrainsMono Nerd Font";
-      };
-
+      user.name = "Alexandre Ros";
+      user.email = "alexland7219@gmail.com";
+      core.editor = "vim";
     };
   };
 
@@ -218,10 +238,10 @@
     '';
   };
 
-  programs.starship = {
-    enable = true;
-    enableBashIntegration = true;
-  };
+  #services.syncthing = {
+  #  enable = true;
+  #  ...
+  #};
 
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {
@@ -237,4 +257,6 @@
     };
 
   };
+
+  home.stateVersion = "24.05";
 }
