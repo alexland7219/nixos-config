@@ -148,6 +148,7 @@
         vscodevim.vim
         vscode-icons-team.vscode-icons
         github.github-vscode-theme
+        ms-vscode-remote.remote-ssh
         enkia.tokyo-night
         teabyii.ayu
       ]
