@@ -9,6 +9,10 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Uiua
+    uiua.url = "github:uiua-lang/uiua";
+    uiua.inputs.nixpkgs.follows = "nixpkgsUnstable";
   };
 
   outputs =

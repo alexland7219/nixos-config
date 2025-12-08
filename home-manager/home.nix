@@ -2,6 +2,7 @@
   config,
   pkgs,
   unstablePkgs,
+  inputs,
   ...
 }:
 
@@ -53,7 +54,8 @@
     cbqn
     alttpr-opentracker
     qusb2snes
-    unstablePkgs.uiua-unstable
+    inputs.uiua.packages.${pkgs.system}.default
+    # unstablePkgs.uiua-unstable
 
     # Retroarch cores
     (retroarch.withCores (

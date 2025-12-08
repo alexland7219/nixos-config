@@ -73,9 +73,9 @@ sudo nixos-rebuild switch --flake .#$HOSTNAME
 # Get current generation metadata
 hname="${HOSTNAME:0:1}"
 
-current=$(nixos-rebuild list-generations | grep current | awk -v X="$hname" '
+current=$(nixos-rebuild list-generations | grep True | awk -v X="$hname" '
 {
-    split($3, d, "-")
+    split($2, d, "-")
     m["1"]="Jan"; m["2"]="Feb"; m["3"]="Mar"; m["4"]="Apr"
     m["5"]="May"; m["6"]="Jun"; m["7"]="Jul"; m["8"]="Aug"
     m["9"]="Sep"; m["10"]="Oct"; m["11"]="Nov"; m["12"]="Dec"
