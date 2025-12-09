@@ -45,6 +45,7 @@
     virt-viewer
     discord
     element-desktop
+    anki-bin
     libreoffice-fresh
     wkhtmltopdf
     cbqn
@@ -104,7 +105,6 @@
     })
   ];
 
-  programs.anki.enable = true;
   programs.alacritty = {
     enable = true;
     theme = "github_dark";

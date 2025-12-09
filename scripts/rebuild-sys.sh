@@ -84,7 +84,8 @@ current=$(nixos-rebuild list-generations | grep True | awk -v X="$hname" '
 }')
 
 # Commit with metadata message
-git commit -am "$current"
+jj commit -m "$current"
+jj bookmark move main -t @-
 
 echo "✅ Rebuilt changes and commited $current"
 
