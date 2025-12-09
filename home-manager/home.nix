@@ -104,6 +104,7 @@
     })
   ];
 
+  programs.anki.enable = true;
   programs.alacritty = {
     enable = true;
     theme = "github_dark";
@@ -234,12 +235,6 @@
     initExtra = ''
       export PATH="$HOME/nixos-config/scripts:$PATH"
     '';
-  };
-
-  programs.anki = {
-    enable = true;
-    language = "de_DE";
-    addons = [ pkgs.ankiAddons.recolor ];
   };
 
   #services.syncthing = {
