@@ -7,9 +7,6 @@
 }:
 
 {
-
-  home.sessionVariables.EDITOR = "vim";
-
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
@@ -33,7 +30,6 @@
     openssl
     texmaker
     bison
-    anki-bin
     yt-dlp
     spotdl
     android-tools
@@ -238,6 +234,12 @@
     initExtra = ''
       export PATH="$HOME/nixos-config/scripts:$PATH"
     '';
+  };
+
+  programs.anki = {
+    enable = true;
+    language = "de_DE";
+    addons = [ pkgs.ankiAddons.recolor ];
   };
 
   #services.syncthing = {

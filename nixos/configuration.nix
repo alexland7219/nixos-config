@@ -95,6 +95,7 @@
     LC_MEASUREMENT = "en_GB.UTF-8";
     LC_MONETARY = "de_DE.UTF-8";
     LC_ALL = "";
+    EDITOR = "vim";
   };
 
   # Users and fonts
