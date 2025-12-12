@@ -26,7 +26,7 @@
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit unstablePkgs inputs; };
+    extraSpecialArgs = { inherit unstablePkgs; };
     users = {
       # Importing home-manager configuration
       alex = import ../home-manager/home.nix;
@@ -94,7 +94,7 @@
     LC_PAPER = "en_GB.UTF-8";
     LC_MEASUREMENT = "en_GB.UTF-8";
     LC_MONETARY = "de_DE.UTF-8";
-    LC_ALL = "";
+    LC_ALL = "en_US.UFT-8";
     EDITOR = "vim";
   };
 
