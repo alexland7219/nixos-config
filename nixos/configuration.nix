@@ -94,7 +94,7 @@
     LC_PAPER = "en_GB.UTF-8";
     LC_MEASUREMENT = "en_GB.UTF-8";
     LC_MONETARY = "de_DE.UTF-8";
-    LC_ALL = "en_US.UFT-8";
+    LC_ALL = "en_US.UTF-8";
     EDITOR = "vim";
   };
 
