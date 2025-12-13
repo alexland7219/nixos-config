@@ -2,6 +2,7 @@
   config,
   pkgs,
   unstablePkgs,
+  hostname,
   ...
 }:
 
@@ -105,7 +106,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "github_dark";
+    theme = "blood_moon";
 
     settings = {
       window = {
@@ -117,7 +118,8 @@
       };
 
       font = {
-        size = 10.0;
+        # On machine Hyrule the font needs to be smaller
+        size = if (hostname == "Hyrule") then 9.0 else 10.0;
         normal.family = "JetBrains Mono";
       };
 
@@ -171,7 +173,7 @@
       "files.autoSave" = "afterDelay";
       "[nix]"."editor.tabSize" = 2;
       "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "GitHub Dark";
+      "workbench.colorTheme" = "Andromeda";
       "editor.cursorBlinking" = "smooth";
       "editor.fontFamily" = "'JetBrains Mono'";
       "editor.formatOnPaste" = true;
@@ -184,7 +186,6 @@
         vscodevim.vim
         vscode-icons-team.vscode-icons
         github.github-vscode-theme
-        ms-vscode-remote.remote-ssh
         enkia.tokyo-night
         teabyii.ayu
       ]
@@ -206,6 +207,12 @@
           publisher = "jnoortheen";
           version = "0.5.0";
           sha256 = "jVuGQzMspbMojYq+af5fmuiaS3l3moG8L8Kyf40vots=";
+        }
+        {
+          name = "andromeda";
+          publisher = "EliverLara";
+          version = "1.9.0";
+          sha256 = "26K2NaYvBwQxRtk1f3ScfqwixUvtoNIBjObjoh8jmVs=";
         }
       ];
   };
