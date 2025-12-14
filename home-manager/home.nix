@@ -106,7 +106,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "blood_moon";
+    theme = "iterm";
 
     settings = {
       window = {
@@ -242,10 +242,13 @@
     '';
   };
 
-  #services.syncthing = {
-  #  enable = true;
-  #  ...
-  #};
+  services.syncthing = {
+    enable = true;
+    settings.folders.Sync = {
+      path = "/home/alex/Sync";
+      label = "Main shared folder";
+    };
+  };
 
   dconf.settings = {
     "org/gnome/settings-daemon/plugins/media-keys" = {
