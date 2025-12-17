@@ -51,8 +51,6 @@
     wkhtmltopdf
     cbqn
     alttpr-opentracker
-    shipwright
-    _2ship2harkinian
     qusb2snes
     unstablePkgs.uiua-unstable
 
@@ -191,6 +189,7 @@
         github.github-vscode-theme
         enkia.tokyo-night
         teabyii.ayu
+        sumneko.lua
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {

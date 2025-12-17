@@ -136,7 +136,9 @@
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     wireguard-tools
+    gnumake
     man-pages
+    wireshark
     hplip
     ares-cli
     libpkcs11-dnie
