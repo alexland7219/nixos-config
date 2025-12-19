@@ -20,6 +20,7 @@
     libgcc
     calibre
     gcc15
+    qemu
     lua
     zulu
     erlang
@@ -50,6 +51,8 @@
     wkhtmltopdf
     cbqn
     alttpr-opentracker
+    shipwright
+    _2ship2harkinian
     qusb2snes
     unstablePkgs.uiua-unstable
 
