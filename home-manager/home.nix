@@ -174,9 +174,9 @@
       "files.autoSave" = "afterDelay";
       "[nix]"."editor.tabSize" = 2;
       "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "Andromeda";
+      "workbench.colorTheme" = "Tokyo Night";
       "editor.cursorBlinking" = "smooth";
-      "editor.fontFamily" = "'JetBrains Mono'";
+      "editor.fontFamily" = "'Maple Mono'";
       "editor.formatOnPaste" = true;
       "terminal.integrated.stickyScroll.enabled" = false;
     };
