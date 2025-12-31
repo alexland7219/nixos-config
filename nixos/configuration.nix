@@ -135,6 +135,7 @@
     killall
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
+    gnome-tweaks
     wireguard-tools
     gnumake
     man-pages

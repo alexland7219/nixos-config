@@ -74,6 +74,7 @@
         pydantic
         pandas
         python-telegram-bot
+        apscheduler
         discordpy
         geopandas
         python-dotenv
