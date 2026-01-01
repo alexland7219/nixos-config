@@ -21,7 +21,8 @@
     calibre
     gcc15
     qemu
-    lua
+    lua5_4_compat
+    love
     zulu
     erlang
     qbittorrent
@@ -175,7 +176,7 @@
       "files.autoSave" = "afterDelay";
       "[nix]"."editor.tabSize" = 2;
       "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "Tokyo Night";
+      "workbench.colorTheme" = "GitHub Dark";
       "editor.cursorBlinking" = "smooth";
       "editor.fontFamily" = "'Maple Mono'";
       "editor.formatOnPaste" = true;
