@@ -103,8 +103,8 @@
         fontawesome5
         fontaxes
         hyperref
-        inter
         totalcount
+        cabin
         ;
     })
   ];
