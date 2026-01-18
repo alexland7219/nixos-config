@@ -104,6 +104,7 @@
         fontaxes
         hyperref
         inter
+        totalcount
         ;
     })
   ];
