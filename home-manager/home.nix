@@ -103,6 +103,7 @@
         fontawesome5
         fontaxes
         hyperref
+        inter
         ;
     })
   ];
