@@ -50,6 +50,7 @@
     anki-bin
     libreoffice-fresh
     wkhtmltopdf
+    weechat
     cbqn
     alttpr-opentracker
     qusb2snes
