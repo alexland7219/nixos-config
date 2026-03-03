@@ -41,8 +41,6 @@
     tauon
     flutter
     telegram-desktop
-    kdePackages.okular
-    kdePackages.poppler
     swi-prolog
     virt-viewer
     discord
@@ -55,6 +53,12 @@
     alttpr-opentracker
     qusb2snes
     unstablePkgs.uiua-unstable
+
+    # KDE Packages
+    kdePackages.okular
+    kdePackages.poppler
+    kdePackages.kleopatra
+    kdePackages.kclock
 
     # Retroarch cores
     (retroarch.withCores (
@@ -257,20 +261,20 @@
     };
   };
 
-  dconf.settings = {
-    "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-      ];
-    };
+  #dconf.settings = {
+  #  "org/gnome/settings-daemon/plugins/media-keys" = {
+  #    custom-keybindings = [
+  #      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+  #    ];
+  #  };
 
-    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-      name = "Launch Alacritty";
-      command = "alacritty";
-      binding = "<Super>Return";
-    };
+  #  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+  #    name = "Launch Alacritty";
+  #    command = "alacritty";
+  #    binding = "<Super>Return";
+  #  };
 
-  };
+  #};
 
   home.stateVersion = "24.05";
 }

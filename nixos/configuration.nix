@@ -53,16 +53,18 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome = {
-    enable = true;
+  services.displayManager.ly.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
-    # On machine Hyrule the interface needs to be scaled by 0.9
-    extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
-      [org/gnome/desktop/interface]
-      text-scaling-factor=0.9
-    '';
-  };
+  #services.desktopManager.gnome = {
+  #  enable = true;
+  #
+  #  # On machine Hyrule the interface needs to be scaled by 0.9
+  #  extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
+  #    [org/gnome/desktop/interface]
+  #    text-scaling-factor=0.9
+  #  '';
+  #};
 
   services.xserver.xkb = {
     layout = "us";
@@ -133,9 +135,9 @@
     htop
     file
     killall
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.appindicator
-    gnome-tweaks
+    #gnomeExtensions.blur-my-shell
+    #gnomeExtensions.appindicator
+    #gnome-tweaks
     wireguard-tools
     gnumake
     man-pages
