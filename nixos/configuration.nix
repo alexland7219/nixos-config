@@ -111,6 +111,7 @@
       "networkmanager"
       "plugdev"
       "dialout"
+      "docker"
     ];
   };
 
@@ -169,6 +170,8 @@
   # services.openssh.enable = true;
   services.mullvad-vpn.enable = true;
   services.pcscd.enable = true;
+
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "25.11";
 }
