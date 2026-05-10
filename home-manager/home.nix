@@ -39,7 +39,6 @@
     exercism
     gimp
     tauon
-    flutter
     telegram-desktop
     swi-prolog
     virt-viewer
@@ -48,6 +47,7 @@
     anki-bin
     libreoffice-fresh
     wkhtmltopdf
+    joplin-desktop
     weechat
     cbqn
     alttpr-opentracker
