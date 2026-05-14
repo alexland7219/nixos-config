@@ -49,6 +49,7 @@
     wkhtmltopdf
     joplin-desktop
     weechat
+    picard
     cbqn
     alttpr-opentracker
     qusb2snes
