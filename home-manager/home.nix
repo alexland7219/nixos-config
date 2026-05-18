@@ -205,26 +205,32 @@
         {
           name = "uiua-vscode";
           publisher = "uiua-lang";
-          version = "0.0.67";
+          version = "0.0.69";
           sha256 = "Q/wJZ+ObCU+hRpZZKQGQtdt99/I6QHkSuHlNy7oe5Pk=";
         }
         {
           name = "bqn";
           publisher = "mk12";
-          version = "0.2.0";
+          version = "0.2.1";
           sha256 = "nTnL75BzHrpnJVO8DFfrLZZGavCC4OzvAlyrGCXSak4=";
         }
         {
           name = "nix-ide";
           publisher = "jnoortheen";
-          version = "0.5.0";
+          version = "0.5.9";
           sha256 = "jVuGQzMspbMojYq+af5fmuiaS3l3moG8L8Kyf40vots=";
         }
         {
           name = "andromeda";
           publisher = "EliverLara";
-          version = "1.9.0";
+          version = "1.10.0";
           sha256 = "26K2NaYvBwQxRtk1f3ScfqwixUvtoNIBjObjoh8jmVs=";
+        }
+        {
+          name = "better-prolog-syntax";
+          publisher = "jeff-hykin";
+          version = "0.3.2";
+          sha256 = "sha256-P3zeOaZB4sy7hCVSu/WQwvuyj+qXwwfbcdNCRg1T0EM=";
         }
       ];
   };
@@ -247,7 +253,7 @@
     enable = true;
     shellAliases = {
       "ls" = "ls -lAh --color=auto";
-      "h++" = "g++ -std=c++23 -O3 -Wall -Wextra -Wpedantic -Werror -march=native";
+      "h++" = "g++ -std=c++26 -O3 -Wall -Wextra -Wpedantic -Werror -march=native";
     };
     initExtra = ''
       export PATH="$HOME/nixos-config/scripts:$PATH"
@@ -262,6 +268,8 @@
     };
   };
 
+  # Enable if I were using GNOME
+  #
   #dconf.settings = {
   #  "org/gnome/settings-daemon/plugins/media-keys" = {
   #    custom-keybindings = [
