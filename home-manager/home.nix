@@ -35,7 +35,6 @@
     yt-dlp
     spotdl
     android-tools
-    zed-editor
     mpv
     exercism
     gimp
@@ -175,6 +174,49 @@
       #  '';
       #};
     };
+  };
+
+  programs.zed-editor = {
+    enable = true;
+    package = unstablePkgs.zed-editor;
+
+    userSettings = {
+      disable_ai = true;
+      session.trust_all_worktrees = true;
+      vim_mode = true;
+      cursor_blink = true;
+      buffer_font_family = "JetBrains Mono";
+      code_lens = "on";
+      languages."Nix".tab_size = 2;
+      buffer_font_size = 15;
+      ui_font_size = 15;
+      autosave.after_delay.milliseconds = 1000;
+      base_keymap = "VSCode";
+      telemetry = {
+        metrics = false;
+        diagnostics = true;
+      };
+      theme = {
+        mode = "dark";
+        dark = "Everforest Dark Hard (material)";
+      };
+    };
+
+    extensions = [
+      # Themes
+      "andromeda"
+      "everforest"
+      "tokyo-night"
+
+      # Grammars
+      "bqn"
+      "haskell"
+      "lua"
+      "make"
+      "nix"
+      "prolog"
+      "uiua"
+    ];
   };
 
   programs.vscode = {
