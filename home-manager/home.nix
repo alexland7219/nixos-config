@@ -39,6 +39,8 @@
     exercism
     gimp
     tauon
+    cargo
+    rustc
     telegram-desktop
     swi-prolog
     virt-viewer
@@ -179,6 +181,13 @@
   programs.zed-editor = {
     enable = true;
     package = unstablePkgs.zed-editor;
+    extraPackages = with pkgs; [
+      nixd
+      nil
+      rust-analyzer
+      lua-language-server
+      
+    ];
 
     userSettings = {
       disable_ai = true;
@@ -188,17 +197,28 @@
       buffer_font_family = "JetBrains Mono";
       code_lens = "on";
       languages."Nix".tab_size = 2;
-      buffer_font_size = 15;
-      ui_font_size = 15;
+      buffer_font_size = 14;
+      ui_font_size = 17;
+      terminal.font_size = 14;
       autosave.after_delay.milliseconds = 1000;
       base_keymap = "VSCode";
+      project_panel = {
+        dock = "left";
+        default_width = 300;
+      };
       telemetry = {
         metrics = false;
         diagnostics = true;
       };
       theme = {
-        mode = "dark";
-        dark = "Everforest Dark Hard (material)";
+        mode = "system";
+        dark = "Andromeda Dark Italic";
+        light = "One Light";
+      };
+      icon_theme = {
+        mode = "system";
+        dark = "Colored Zed Icons Theme Dark";
+        light = "Colored Zed Icons Theme Light";
       };
     };
 
@@ -207,75 +227,20 @@
       "andromeda"
       "everforest"
       "tokyo-night"
+      "github-theme"
+      "colored-zed-icons-theme"
 
       # Grammars
       "bqn"
+      "git-firefly"
       "haskell"
       "lua"
       "make"
       "nix"
       "prolog"
+      "toml"
       "uiua"
     ];
-  };
-
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-
-    profiles.default.userSettings = {
-      "files.autoSave" = "afterDelay";
-      "[nix]"."editor.tabSize" = 2;
-      "workbench.iconTheme" = "vscode-icons";
-      "workbench.colorTheme" = "GitHub Dark";
-      "editor.cursorBlinking" = "smooth";
-      "editor.fontFamily" = "'Maple Mono'";
-      "editor.formatOnPaste" = true;
-      "terminal.integrated.stickyScroll.enabled" = false;
-    };
-
-    profiles.default.extensions =
-      with pkgs.vscode-extensions;
-      [
-        vscodevim.vim
-        vscode-icons-team.vscode-icons
-        github.github-vscode-theme
-        enkia.tokyo-night
-        teabyii.ayu
-        sumneko.lua
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "uiua-vscode";
-          publisher = "uiua-lang";
-          version = "0.0.69";
-          sha256 = "Q/wJZ+ObCU+hRpZZKQGQtdt99/I6QHkSuHlNy7oe5Pk=";
-        }
-        {
-          name = "bqn";
-          publisher = "mk12";
-          version = "0.2.1";
-          sha256 = "nTnL75BzHrpnJVO8DFfrLZZGavCC4OzvAlyrGCXSak4=";
-        }
-        {
-          name = "nix-ide";
-          publisher = "jnoortheen";
-          version = "0.5.9";
-          sha256 = "jVuGQzMspbMojYq+af5fmuiaS3l3moG8L8Kyf40vots=";
-        }
-        {
-          name = "andromeda";
-          publisher = "EliverLara";
-          version = "1.10.0";
-          sha256 = "26K2NaYvBwQxRtk1f3ScfqwixUvtoNIBjObjoh8jmVs=";
-        }
-        {
-          name = "better-prolog-syntax";
-          publisher = "jeff-hykin";
-          version = "0.3.2";
-          sha256 = "sha256-P3zeOaZB4sy7hCVSu/WQwvuyj+qXwwfbcdNCRg1T0EM=";
-        }
-      ];
   };
 
   programs.thunderbird = {
@@ -310,23 +275,6 @@
       label = "Main shared folder";
     };
   };
-
-  # Enable if I were using GNOME
-  #
-  #dconf.settings = {
-  #  "org/gnome/settings-daemon/plugins/media-keys" = {
-  #    custom-keybindings = [
-  #      "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
-  #    ];
-  #  };
-
-  #  "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-  #    name = "Launch Alacritty";
-  #    command = "alacritty";
-  #    binding = "<Super>Return";
-  #  };
-
-  #};
 
   home.stateVersion = "24.05";
 }
