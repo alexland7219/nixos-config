@@ -35,6 +35,7 @@
     yt-dlp
     spotdl
     android-tools
+    zed-editor
     mpv
     exercism
     gimp
