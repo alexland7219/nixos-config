@@ -187,7 +187,6 @@
       nil
       rust-analyzer
       lua-language-server
-
     ];
 
     userSettings =
@@ -234,6 +233,11 @@
           mode = "system";
           dark = "Colored Zed Icons Theme Dark";
           light = "Colored Zed Icons Theme Light";
+        };
+        profiles.Uiua.settings = {
+          buffer_font_family = "Uiua386";
+          buffer_font_size = 18;
+          autosave = "off";
         };
       };
 
