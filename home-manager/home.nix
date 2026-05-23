@@ -42,6 +42,7 @@
     cargo
     rustc
     telegram-desktop
+    tutanota-desktop
     swi-prolog
     virt-viewer
     discord
@@ -143,7 +144,7 @@
     enable = true;
     package = unstablePkgs.jujutsu;
     settings = {
-      user.email = "alexland7219@gmail.com";
+      user.email = "alexandre-ros@tuta.io";
       user.name = "Alexandre Ros";
       ui.paginate = "never";
       ui.default-command = "log";
@@ -186,41 +187,55 @@
       nil
       rust-analyzer
       lua-language-server
-      
+
     ];
 
-    userSettings = {
-      disable_ai = true;
-      session.trust_all_worktrees = true;
-      vim_mode = true;
-      cursor_blink = true;
-      buffer_font_family = "JetBrains Mono";
-      code_lens = "on";
-      languages."Nix".tab_size = 2;
-      buffer_font_size = 14;
-      ui_font_size = 17;
-      terminal.font_size = 14;
-      autosave.after_delay.milliseconds = 1000;
-      base_keymap = "VSCode";
-      project_panel = {
-        dock = "left";
-        default_width = 300;
+    userSettings =
+      let
+        fontsize =
+          if (hostname == "Hyrule") then
+            {
+              txt = 13;
+              ui = 16;
+            }
+          else
+            {
+              txt = 14;
+              ui = 17;
+            };
+      in
+      {
+        disable_ai = true;
+        session.trust_all_worktrees = true;
+        vim_mode = true;
+        cursor_blink = true;
+        buffer_font_family = "JetBrains Mono";
+        code_lens = "on";
+        languages."Nix".tab_size = 2;
+        buffer_font_size = fontsize.txt;
+        ui_font_size = fontsize.ui;
+        terminal.font_size = fontsize.txt;
+        autosave.after_delay.milliseconds = 1000;
+        base_keymap = "VSCode";
+        project_panel = {
+          dock = "left";
+          default_width = 300;
+        };
+        telemetry = {
+          metrics = false;
+          diagnostics = true;
+        };
+        theme = {
+          mode = "system";
+          dark = "Andromeda Dark Italic";
+          light = "One Light";
+        };
+        icon_theme = {
+          mode = "system";
+          dark = "Colored Zed Icons Theme Dark";
+          light = "Colored Zed Icons Theme Light";
+        };
       };
-      telemetry = {
-        metrics = false;
-        diagnostics = true;
-      };
-      theme = {
-        mode = "system";
-        dark = "Andromeda Dark Italic";
-        light = "One Light";
-      };
-      icon_theme = {
-        mode = "system";
-        dark = "Colored Zed Icons Theme Dark";
-        light = "Colored Zed Icons Theme Light";
-      };
-    };
 
     extensions = [
       # Themes
@@ -252,7 +267,7 @@
     enable = true;
     settings = {
       user.name = "Alexandre Ros";
-      user.email = "alexland7219@gmail.com";
+      user.email = "alexandre-ros@tuta.io";
       core.editor = "vim";
     };
   };
