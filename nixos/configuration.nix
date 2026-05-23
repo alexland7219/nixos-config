@@ -44,6 +44,17 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Apply kernel patch for Bluetooth
+  boot.kernelPatches = [
+    {
+      name = "btmtk-fix-wmt-func-ctrl";
+      patch = pkgs.fetchurl {
+        url = "lore.kernel.org/all/770d36b07311bf88210c187923f243fb9f126f04.1777058551.git.pav@iki.fi/t.mbox.gz";
+        hash = "sha256-L7yLvq4Jp7/rQ6VimH+Y++sdDphmMmaknw+v5O3O1sU=";
+      };
+    }
+  ];
+
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
   networking.firewall.enable = true;
