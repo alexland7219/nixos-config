@@ -287,13 +287,5 @@
     '';
   };
 
-  services.syncthing = {
-    enable = true;
-    settings.folders.Sync = {
-      path = "/home/alex/Sync";
-      label = "Main shared folder";
-    };
-  };
-
   home.stateVersion = "24.05";
 }
