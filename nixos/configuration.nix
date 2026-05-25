@@ -147,9 +147,6 @@
     htop
     file
     killall
-    #gnomeExtensions.blur-my-shell
-    #gnomeExtensions.appindicator
-    #gnome-tweaks
     wireguard-tools
     gnumake
     man-pages
@@ -176,8 +173,12 @@
     enableSSHSupport = true;
   };
 
-  # Services
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
 
+  # Services
   # services.openssh.enable = true;
   services.mullvad-vpn.enable = true;
   services.pcscd.enable = true;
