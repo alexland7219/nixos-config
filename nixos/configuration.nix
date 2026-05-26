@@ -45,7 +45,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Apply kernel patch for Bluetooth
-  boot.kernelPatches = [
+  boot.kernelPatches = lib.mkIf (hostname == "Termina") [
     {
       name = "btmtk-fix-wmt-func-ctrl";
       patch = pkgs.fetchurl {

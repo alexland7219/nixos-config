@@ -226,8 +226,8 @@
         };
         theme = {
           mode = "system";
-          dark = "Andromeda Dark Italic";
-          light = "One Light";
+          dark = "Tokyo Night";
+          light = "Catppuccin Latte";
         };
         icon_theme = {
           mode = "system";
@@ -248,6 +248,7 @@
       "tokyo-night"
       "github-theme"
       "colored-zed-icons-theme"
+      "catppuccin"
 
       # Grammars
       "bqn"
