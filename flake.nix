@@ -9,6 +9,12 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # BQNLSP
+    bqnlsp.url = "sourcehut:~detegr/bqnlsp";
+    bqnlsp.inputs.nixpkgs.follows = "nixpkgsUnstable";
+    bqnlsp.inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgsUnstable";
+    bqnlsp.inputs.naersk.inputs.nixpkgs.follows = "nixpkgsUnstable";
   };
 
   outputs =

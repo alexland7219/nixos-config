@@ -26,7 +26,10 @@
   home-manager = {
     backupFileExtension = "bak";
     useGlobalPkgs = true;
-    extraSpecialArgs = { inherit unstablePkgs hostname; };
+    extraSpecialArgs = {
+      inherit unstablePkgs hostname;
+      bqnlsp = inputs.bqnlsp;
+    };
     users = {
       # Importing home-manager configuration
       alex = import ../home-manager/home.nix;

@@ -1,15 +1,15 @@
 {
   config,
   pkgs,
-  unstablePkgs,
   hostname,
   ...
-}:
+}@args:
 
 {
   xdg.userDirs = {
     enable = true;
     createDirectories = true;
+    setSessionVariables = true;
   };
 
   # Packages
@@ -56,8 +56,9 @@
     cbqn
     alttpr-opentracker
     qusb2snes
-    unstablePkgs.uiua-unstable
-
+    args.unstablePkgs.uiua-unstable
+    args.bqnlsp.packages.${pkgs.system}.lsp
+    
     # KDE Packages
     kdePackages.okular
     kdePackages.poppler
@@ -142,7 +143,7 @@
 
   programs.jujutsu = {
     enable = true;
-    package = unstablePkgs.jujutsu;
+    package = args.unstablePkgs.jujutsu;
     settings = {
       user.email = "alexandre-ros@tuta.io";
       user.name = "Alexandre Ros";
@@ -181,13 +182,16 @@
 
   programs.zed-editor = {
     enable = true;
-    package = unstablePkgs.zed-editor;
-    extraPackages = with pkgs; [
-      nixd
-      nil
-      rust-analyzer
-      lua-language-server
-    ];
+    package = args.unstablePkgs.zed-editor;
+    extraPackages =
+      with pkgs;
+      [
+        nixd
+        nil
+        rust-analyzer
+        lua-language-server
+      ]
+      ++ [ args.bqnlsp.packages.${pkgs.system}.lsp ];
 
     userSettings =
       let
