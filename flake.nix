@@ -15,6 +15,10 @@
     bqnlsp.inputs.nixpkgs.follows = "nixpkgsUnstable";
     bqnlsp.inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgsUnstable";
     bqnlsp.inputs.naersk.inputs.nixpkgs.follows = "nixpkgsUnstable";
+
+    # Uiua
+    uiua.url = "github:uiua-lang/uiua";
+    uiua.inputs.nixpkgs.follows = "nixpkgsUnstable";
   };
 
   outputs =

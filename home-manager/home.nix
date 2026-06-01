@@ -12,112 +12,121 @@
     setSessionVariables = true;
   };
 
+  fonts.fontconfig.enable = true;
+
   # Packages
-  home.packages = with pkgs; [
-    tree
-    git
-    mullvad-vpn
-    libgcc
-    calibre
-    gcc15
-    qemu
-    lua5_4_compat
-    love
-    zulu
-    erlang
-    qbittorrent
-    dolphin-emu
-    vlc
-    keepassxc
-    openssl
-    texmaker
-    bison
-    yt-dlp
-    spotdl
-    android-tools
-    mpv
-    exercism
-    gimp
-    tauon
-    cargo
-    rustc
-    telegram-desktop
-    tutanota-desktop
-    swi-prolog
-    virt-viewer
-    discord
-    element-desktop
-    anki-bin
-    libreoffice-fresh
-    wkhtmltopdf
-    joplin-desktop
-    weechat
-    picard
-    cbqn
-    alttpr-opentracker
-    qusb2snes
-    args.unstablePkgs.uiua-unstable
-    args.bqnlsp.packages.${pkgs.system}.lsp
-    
-    # KDE Packages
-    kdePackages.okular
-    kdePackages.poppler
-    kdePackages.kleopatra
-    kdePackages.kclock
+  home.packages =
+    let
+      uiua = args.uiua.packages.${pkgs.system};
+      bqnlsp = args.bqnlsp.packages.${pkgs.system};
+    in
+    with pkgs;
+    [
+      tree
+      git
+      mullvad-vpn
+      libgcc
+      calibre
+      gcc15
+      qemu
+      lua5_4_compat
+      love
+      zulu
+      erlang
+      qbittorrent
+      dolphin-emu
+      vlc
+      keepassxc
+      openssl
+      texmaker
+      bison
+      yt-dlp
+      spotdl
+      android-tools
+      mpv
+      exercism
+      gimp
+      tauon
+      cargo
+      rustc
+      telegram-desktop
+      tutanota-desktop
+      swi-prolog
+      virt-viewer
+      discord
+      element-desktop
+      anki-bin
+      libreoffice-fresh
+      wkhtmltopdf
+      joplin-desktop
+      weechat
+      picard
+      cbqn
+      alttpr-opentracker
+      qusb2snes
+      uiua.default
+      uiua.fonts
+      bqnlsp.lsp
 
-    # Retroarch cores
-    (retroarch.withCores (
-      cores: with cores; [
-        snes9x
-      ]
-    ))
+      # KDE Packages
+      kdePackages.okular
+      kdePackages.poppler
+      kdePackages.kleopatra
+      kdePackages.kclock
 
-    # Python 3.11 packages
-    (python313.withPackages (
-      ps: with ps; [
-        pip
-        numpy
-        requests
-        matplotlib
-        requests-toolbelt
-        pyyaml
-        rich
-        pydantic
-        pandas
-        python-telegram-bot
-        apscheduler
-        discordpy
-        geopandas
-        python-dotenv
-      ]
-    ))
+      # Retroarch cores
+      (retroarch.withCores (
+        cores: with cores; [
+          snes9x
+        ]
+      ))
 
-    # Haskell packages
-    haskellPackages.ghc
-    haskellPackages.cabal-install
-    haskellPackages.hlint
+      # Python 3.11 packages
+      (python313.withPackages (
+        ps: with ps; [
+          pip
+          numpy
+          requests
+          matplotlib
+          requests-toolbelt
+          pyyaml
+          rich
+          pydantic
+          pandas
+          python-telegram-bot
+          apscheduler
+          discordpy
+          geopandas
+          python-dotenv
+        ]
+      ))
 
-    # LaTeX packages
-    (texlive.combine {
-      inherit (texlive)
-        scheme-medium
-        fira
-        geometry
-        xcolor
-        enumitem
-        xhfill
-        soul
-        titlesec
-        lastpage
-        fancyhdr
-        fontawesome5
-        fontaxes
-        hyperref
-        totalcount
-        cabin
-        ;
-    })
-  ];
+      # Haskell packages
+      haskellPackages.ghc
+      haskellPackages.cabal-install
+      haskellPackages.hlint
+
+      # LaTeX packages
+      (texlive.combine {
+        inherit (texlive)
+          scheme-medium
+          fira
+          geometry
+          xcolor
+          enumitem
+          xhfill
+          soul
+          titlesec
+          lastpage
+          fancyhdr
+          fontawesome5
+          fontaxes
+          hyperref
+          totalcount
+          cabin
+          ;
+      })
+    ];
 
   programs.alacritty = {
     enable = true;

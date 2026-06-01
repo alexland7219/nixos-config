@@ -29,6 +29,7 @@
     extraSpecialArgs = {
       inherit unstablePkgs hostname;
       bqnlsp = inputs.bqnlsp;
+      uiua = inputs.uiua;
     };
     users = {
       # Importing home-manager configuration
@@ -151,7 +152,6 @@
   fonts.packages = with pkgs; [
     jetbrains-mono
     ubuntu-sans-mono
-    uiua386
     bqn386
     noto-fonts-cjk-sans
     noto-fonts
