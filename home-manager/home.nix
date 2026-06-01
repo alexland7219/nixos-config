@@ -49,6 +49,7 @@
       tauon
       cargo
       rustc
+      clippy
       telegram-desktop
       tutanota-desktop
       swi-prolog
