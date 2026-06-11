@@ -74,6 +74,7 @@
       kdePackages.poppler
       kdePackages.kleopatra
       kdePackages.kclock
+      kdePackages.skanpage
 
       # Retroarch cores
       (retroarch.withCores (
