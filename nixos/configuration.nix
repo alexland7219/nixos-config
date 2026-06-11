@@ -83,6 +83,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  hardware.sane.enable = true;
+  hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
 
   services.pipewire = {
     enable = true;
@@ -121,6 +123,8 @@
       "plugdev"
       "dialout"
       "docker"
+      "scanner"
+      "lp"
     ];
   };
 
