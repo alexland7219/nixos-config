@@ -73,10 +73,8 @@
       kdePackages.okular
       kdePackages.poppler
       kdePackages.kleopatra
-
-      # GNOME extensions
-      gnomeExtensions.unite
-      gnomeExtensions.transparent-top-bar
+      kdePackages.kclock
+      kdePackages.skanpage
 
       # Retroarch cores
       (retroarch.withCores (
