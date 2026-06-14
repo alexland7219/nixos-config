@@ -57,23 +57,24 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
-    elisa
-  ];
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #  konsole
+  #  elisa
+  #];
 
-  #services.desktopManager.gnome = {
-  #  enable = true;
-  #
-  #  # On machine Hyrule the interface needs to be scaled by 0.9
-  #  extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
-  #    [org/gnome/desktop/interface]
-  #    text-scaling-factor=0.9
-  #  '';
-  #};
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome = {
+    enable = true;
+
+    # On machine Hyrule the interface needs to be scaled by 0.9
+    extraGSettingsOverrides = lib.optionalString (hostname == "Hyrule") ''
+      [org/gnome/desktop/interface]
+      text-scaling-factor=0.9
+    '';
+  };
 
   services.xserver.xkb = {
     layout = "us";
@@ -140,6 +141,7 @@
   };
 
   programs.steam.enable = true;
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim

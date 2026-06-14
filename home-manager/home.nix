@@ -73,8 +73,10 @@
       kdePackages.okular
       kdePackages.poppler
       kdePackages.kleopatra
-      kdePackages.kclock
-      kdePackages.skanpage
+
+      # GNOME extensions
+      gnomeExtensions.unite
+      gnomeExtensions.transparent-top-bar
 
       # Retroarch cores
       (retroarch.withCores (
@@ -219,18 +221,20 @@
             };
       in
       {
-        disable_ai = true;
         session.trust_all_worktrees = true;
         vim_mode = true;
         cursor_blink = true;
         buffer_font_family = "JetBrains Mono";
         code_lens = "on";
-        languages."Nix".tab_size = 2;
         buffer_font_size = fontsize.txt;
         ui_font_size = fontsize.ui;
         terminal.font_size = fontsize.txt;
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "VSCode";
+        languages = {
+          "Nix".tab_size = 4;
+          "Prolog".tab_size = 2;
+        };
         project_panel = {
           dock = "left";
           default_width = 300;
@@ -254,6 +258,16 @@
           buffer_font_size = 18;
           autosave = "off";
         };
+        agent = {
+          dock = "right";
+          sidebar_side = "right";
+          agent_ui_font_size = fontsize.ui;
+        };
+        agent_servers = {
+          "mistral-vibe".type = "registry";
+          "claude-acp".type = "registry";
+          "kimi".type = "registry";
+        };
       };
 
     extensions = [
@@ -264,6 +278,7 @@
       "github-theme"
       "colored-zed-icons-theme"
       "catppuccin"
+      "nvim-nightfox"
 
       # Grammars
       "bqn"
