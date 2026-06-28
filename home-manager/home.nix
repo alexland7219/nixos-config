@@ -2,6 +2,7 @@
   config,
   pkgs,
   hostname,
+  unstablePkgs,
   ...
 }@args:
 
@@ -17,7 +18,6 @@
   # Packages
   home.packages =
     let
-      uiua = args.uiua.packages.${pkgs.system};
       bqnlsp = args.bqnlsp.packages.${pkgs.system};
     in
     with pkgs;
@@ -27,9 +27,9 @@
       mullvad-vpn
       libgcc
       calibre
-      gcc15
+      gcc16
       qemu
-      lua5_4_compat
+      lua5_5_compat
       love
       zulu
       erlang
@@ -45,7 +45,7 @@
       android-tools
       mpv
       exercism
-      gimp
+      unstablePkgs.gimp
       tauon
       cargo
       rustc
@@ -56,7 +56,7 @@
       virt-viewer
       discord
       element-desktop
-      anki-bin
+      unstablePkgs.anki-bin
       libreoffice-fresh
       wkhtmltopdf
       joplin-desktop
@@ -65,8 +65,7 @@
       cbqn
       alttpr-opentracker
       qusb2snes
-      uiua.default
-      uiua.fonts
+      unstablePkgs.uiua-unstable
       bqnlsp.lsp
 
       # KDE Packages
