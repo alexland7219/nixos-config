@@ -82,6 +82,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.ipp-usb.enable = true;
   hardware.sane.enable = true;
   hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
 

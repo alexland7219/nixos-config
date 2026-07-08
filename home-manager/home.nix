@@ -51,7 +51,7 @@
       rustc
       clippy
       telegram-desktop
-      tutanota-desktop
+      unstablePkgs.tutanota-desktop
       swi-prolog
       virt-viewer
       discord
