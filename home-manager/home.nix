@@ -18,7 +18,7 @@
   # Packages
   home.packages =
     let
-      bqnlsp = args.bqnlsp.packages.${pkgs.system};
+      bqnlsp = args.bqnlsp.packages.${pkgs.stdenv.hostPlatform.system};
     in
     with pkgs;
     [
@@ -165,6 +165,10 @@
       #  "working_copy author" = "yellow";
       #  "working_copy change_id" = "#EC0868";
       #};
+      colors.conflict_prompt = {
+        fg = "red";
+        bold = true;
+      };
       template-aliases = {
         "format_short_signature(signature)" = "signature.email().local()";
       };
@@ -175,18 +179,36 @@
     enable = true;
     enableBashIntegration = true;
     settings = {
-      #custom.jj-revision = {
-      #  description = "The current JJ status";
-      #  when = "jj --ignore-working-copy root";
-      #  command = ''
-      #    jj log -r @ -n 1 --ignore-working-copy -G --color always -T '
-      #      separate(" ",
-      #        change_id.shortest(4),
-      #        if(local_bookmarks, local_bookmarks)
-      #      )
-      #    '
-      #  '';
-      #};
+      # Disable the built-in git modules entirely (this is a jj workflow).
+      git_branch.disabled = true;
+      git_commit.disabled = true;
+      git_state.disabled = true;
+      git_status.disabled = true;
+      git_metrics.disabled = true;
+
+      custom.jj = {
+        description = "Jujutsu change id and bookmark";
+        when = "jj --ignore-working-copy root";
+        shell = [
+          "bash"
+          "--noprofile"
+          "--norc"
+        ];
+        command = ''
+          change=$(jj log --no-graph --ignore-working-copy --color always -r @ -T 'change_id.shortest(8)' 2>/dev/null)
+          bookmark=$(jj log --no-graph --ignore-working-copy --color always -r 'latest(heads(::@ & bookmarks()))' -T 'local_bookmarks.join(" ")' 2>/dev/null)
+          conflict=$(jj log --no-graph --ignore-working-copy --color always -r @ -T 'if(conflict, label("conflict_prompt", "[CONFLICT]"))' 2>/dev/null)
+          if [ -n "$bookmark" ]; then
+            printf '%s 🔖 %s' "$change" "$bookmark"
+          else
+            printf '%s' "$change"
+          fi
+          if [ -n "$conflict" ]; then
+            printf ' %s' "$conflict"
+          fi
+        '';
+        format = "[🌺 ](bold cyan)$output ";
+      };
     };
   };
 
@@ -201,7 +223,7 @@
         rust-analyzer
         lua-language-server
       ]
-      ++ [ args.bqnlsp.packages.${pkgs.system}.lsp ];
+      ++ [ args.bqnlsp.packages.${pkgs.stdenv.hostPlatform.system}.lsp ];
 
     userSettings =
       let

@@ -41,6 +41,8 @@
     "nix-command"
     "flakes"
   ];
+  # Silence the "Git tree is dirty" warning on flake rebuilds
+  nix.settings.warn-dirty = false;
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -98,7 +100,23 @@
     supportedLocales = [
       "en_US.UTF-8/UTF-8"
       "de_DE.UTF-8/UTF-8"
+      "zh_CN.UTF-8/UTF-8"
     ];
+  };
+
+  # Chinese input methods (Pinyin + Wubi) via Fcitx5
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [
+        qt6Packages.fcitx5-chinese-addons
+        fcitx5-table-extra
+        kdePackages.fcitx5-qt
+        kdePackages.fcitx5-configtool
+      ];
+    };
   };
 
   environment.variables = {
