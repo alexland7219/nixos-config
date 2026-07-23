@@ -183,6 +183,7 @@
     bqn386
     uiua386
     noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
     noto-fonts
     noto-fonts-lgc-plus
     nerd-fonts.jetbrains-mono
