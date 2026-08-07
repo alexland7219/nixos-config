@@ -188,7 +188,7 @@
     noto-fonts-lgc-plus
     nerd-fonts.jetbrains-mono
     maple-mono.variable
-    roboto
+    roboto-slab
   ];
 
   programs.gnupg.agent = {
