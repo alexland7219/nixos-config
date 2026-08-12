@@ -131,7 +131,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "everforest_light_medium";
+    theme = "alabaster";
 
     settings = {
       window = {

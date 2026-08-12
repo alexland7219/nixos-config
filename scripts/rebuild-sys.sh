@@ -68,8 +68,7 @@ git diff -U0 '*.nix'
 echo "🔁 Rebuilding NixOS..."
 
 # Rebuild
-# Filter out the stray `builtins.trace config` debug line emitted by naersk
-sudo nixos-rebuild switch --flake .#$HOSTNAME 2> >(grep -v '^trace: ' >&2)
+sudo nixos-rebuild switch --flake .#$HOSTNAME
 
 # Get current generation metadata
 hname="${HOSTNAME:0:1}"
