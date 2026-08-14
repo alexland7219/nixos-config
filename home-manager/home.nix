@@ -131,10 +131,11 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "alabaster";
+    theme = "omni";
 
     settings = {
       window = {
+        blur = true;
         padding = {
           x = 8;
           y = 8;

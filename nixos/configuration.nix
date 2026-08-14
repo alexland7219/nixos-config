@@ -179,6 +179,7 @@
 
   fonts.packages = with pkgs; [
     jetbrains-mono
+    geist-font
     ubuntu-sans-mono
     bqn386
     uiua386
