@@ -25,6 +25,7 @@
 
   home-manager = {
     backupFileExtension = "bak";
+    overwriteBackup = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {
       inherit unstablePkgs hostname;

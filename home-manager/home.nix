@@ -22,57 +22,60 @@
     in
     with pkgs;
     [
-      tree
-      git
-      mullvad-vpn
-      libgcc
-      calibre
-      gcc16
-      qemu
-      lua5_5_compat
-      love
-      zulu
-      erlang
-      qbittorrent
-      dolphin-emu
-      vlc
-      keepassxc
-      openssl
-      texmaker
-      bison
-      yt-dlp
-      spotdl
-      android-tools
-      mpv
-      exercism
-      unstablePkgs.gimp
-      tauon
-      cargo
-      rustc
-      clippy
-      telegram-desktop
-      unstablePkgs.tutanota-desktop
-      swi-prolog
-      virt-viewer
-      discord
-      element-desktop
-      unstablePkgs.anki-bin
-      libreoffice-fresh
-      wkhtmltopdf
-      joplin-desktop
-      weechat
-      picard
-      cbqn
       alttpr-opentracker
-      qusb2snes
-      unstablePkgs.uiua-unstable
+      android-tools
+      bison
       bqnlsp.lsp
+      calibre
+      cargo
+      cbqn
+      clippy
+      discord
+      dolphin-emu
+      element-desktop
+      erlang
+      exercism
+      gcc16
+      gimp
+      git
+      joplin-desktop
+      keepassxc
+      libgcc
+      libreoffice-fresh
+      love
+      lua5_5_compat
+      mpv
+      mullvad-vpn
+      newsboat
+      openssl
+      picard
+      qbittorrent
+      qemu
+      qusb2snes
+      rustc
+      spotdl
+      swi-prolog
+      tauon
+      telegram-desktop
+      texmaker
+      tree
+      unstablePkgs.anki-bin
+      unstablePkgs.tutanota-desktop
+      unstablePkgs.uiua-unstable
+      unzip
+      virt-viewer
+      vlc
+      weechat
+      wkhtmltopdf
+      yt-dlp
+      zulu
 
       # KDE Packages
+      kdePackages.kclock
+      kdePackages.kio-gdrive
+      kdePackages.kleopatra
       kdePackages.okular
       kdePackages.poppler
-      kdePackages.kleopatra
-      kdePackages.kclock
       kdePackages.skanpage
 
       # Retroarch cores
@@ -85,26 +88,26 @@
       # Python 3.11 packages
       (python313.withPackages (
         ps: with ps; [
-          pip
-          numpy
-          requests
-          matplotlib
-          requests-toolbelt
-          pyyaml
-          rich
-          pydantic
-          pandas
-          python-telegram-bot
           apscheduler
           discordpy
           geopandas
+          matplotlib
+          numpy
+          pandas
+          pip
+          pydantic
           python-dotenv
+          python-telegram-bot
+          pyyaml
+          requests
+          requests-toolbelt
+          rich
         ]
       ))
 
       # Haskell packages
-      haskellPackages.ghc
       haskellPackages.cabal-install
+      haskellPackages.ghc
       haskellPackages.hlint
 
       # LaTeX packages
@@ -131,7 +134,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "omni";
+    theme = "doom_one";
 
     settings = {
       window = {
@@ -252,7 +255,7 @@
         autosave.after_delay.milliseconds = 1000;
         base_keymap = "VSCode";
         languages = {
-          "Nix".tab_size = 4;
+          "Nix".tab_size = 2;
           "Prolog".tab_size = 2;
         };
         project_panel = {
