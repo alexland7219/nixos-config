@@ -67,6 +67,7 @@
       vlc
       weechat
       wkhtmltopdf
+      xournalpp
       yt-dlp
       zulu
 
@@ -134,7 +135,7 @@
 
   programs.alacritty = {
     enable = true;
-    theme = "doom_one";
+    theme = "flat_remix";
 
     settings = {
       window = {
