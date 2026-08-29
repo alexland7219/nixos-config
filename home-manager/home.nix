@@ -44,6 +44,7 @@
       libreoffice-fresh
       love
       lua5_5_compat
+      lynx
       mpv
       mullvad-vpn
       newsboat
