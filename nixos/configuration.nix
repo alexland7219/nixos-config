@@ -42,8 +42,11 @@
     "nix-command"
     "flakes"
   ];
+
   # Silence the "Git tree is dirty" warning on flake rebuilds
   nix.settings.warn-dirty = false;
+
+  # Allow unfree software
   nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
@@ -76,6 +79,18 @@
   #    text-scaling-factor=0.9
   #  '';
   #};
+
+  # Garbage Collection and Optimization
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = "weekly";
+  };
 
   services.xserver.xkb = {
     layout = "us";
