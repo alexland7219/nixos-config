@@ -9,42 +9,53 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # BQNLSP
-    bqnlsp.url = "sourcehut:~detegr/bqnlsp";
-    bqnlsp.inputs.nixpkgs.follows = "nixpkgsUnstable";
-    bqnlsp.inputs.rust-overlay.inputs.nixpkgs.follows = "nixpkgsUnstable";
-    bqnlsp.inputs.naersk.inputs.nixpkgs.follows = "nixpkgsUnstable";
   };
 
-  outputs =
-    { self, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      unstablePkgs = inputs.nixpkgsUnstable.legacyPackages.${system};
-    in
-    {
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        Termina = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs unstablePkgs;
-            hostname = "Termina";
-          };
-          modules = [ ./nixos/configuration.nix ];
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    unstablePkgs = inputs.nixpkgsUnstable.legacyPackages.${system};
 
-        Hyrule = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs unstablePkgs;
-            hostname = "Hyrule";
-          };
-          modules = [ ./nixos/configuration.nix ];
-        };
+    mkHost = {
+      hostname,
+      hardwareModule,
+      username,
+    }:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs unstablePkgs hostname;};
+
+        modules = [
+          ./nixos/common.nix
+          hardwareModule
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.backupFileExtension = "bak";
+            home-manager.extraSpecialArgs = {inherit inputs unstablePkgs hostname;};
+            home-manager.overwriteBackup = true;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${username} = import ./home/default.nix;
+          }
+        ];
       };
-
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+  in {
+    # NixOS configuration entrypoint
+    # Available through 'nixos-rebuild --flake .#your-hostname'
+    nixosConfigurations = {
+      Termina = mkHost {
+        hostname = "Termina";
+        hardwareModule = ./hardware/Termina.nix;
+        username = "alex";
+      };
+      Hyrule = mkHost {
+        hostname = "Hyrule";
+        hardwareModule = ./hardware/Hyrule.nix;
+        username = "alex";
+      };
     };
-
+  };
 }

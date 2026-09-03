@@ -1,69 +1,14 @@
 #!/usr/bin/env bash
 
-# --home          will open home.nix
-# --config        will open configuration.nix
-# --hostname=NAME will set the hostname name, otherwise it will run hostname
-#                 by default, no file is opened
-
-# Exit on any command error
 set -e
 
-HOME_FLAG=false
-CONFIG_FLAG=false
 HOSTNAME=$(hostname)
-
-# Parse arguments
-while [[ $# -gt 0 ]]; do
-    case $1 in
-        --home)
-            HOME_FLAG=true
-            shift
-            ;;
-        --config)
-            CONFIG_FLAG=true
-            shift
-            ;;
-        --hostname=*)
-            HOSTNAME="${1#*=}"
-            shift
-            ;;
-        *)
-            echo "\e[33mUnknown option: $1\e[0m"
-            exit 1
-            ;;
-    esac
-done
-
-# Open selected files
-if $HOME_FLAG; then
-    "$EDITOR" "$HOME/nixos-config/home-manager/home.nix"
-fi
-
-# In case the editor failed
-if [[ $? -ne 0 ]]; then
-    echo -e "\e[31mAborting rebuild...\e[0m"
-    exit 0
-fi
-
-if $CONFIG_FLAG; then
-    "$EDITOR" "$HOME/nixos-config/nixos/configuration.nix"
-fi
-
-# In case the editor failed
-if [[ $? -ne 0 ]]; then
-    echo -e "\e[31mAborting rebuild...\e[0m"
-    exit 0
-fi
-
 pushd "$HOME/nixos-config"
 
 echo -e "\e[36m== Formatting ==\e[0m"
 
-# Format
-nix fmt **/*.nix
-
-# Show git changes
-git diff -U0 '*.nix'
+# Show jj changes
+jj diff -- 'glob:"**/*.nix"'
 
 echo "🔁 Rebuilding NixOS..."
 
