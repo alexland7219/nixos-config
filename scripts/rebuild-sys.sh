@@ -13,7 +13,7 @@ jj diff -- 'glob:"**/*.nix"'
 echo "🔁 Rebuilding NixOS..."
 
 # Rebuild
-sudo nixos-rebuild switch --flake .#$HOSTNAME
+doas nixos-rebuild switch --flake .#$HOSTNAME
 
 # Get current generation metadata
 hname="${HOSTNAME:0:1}"

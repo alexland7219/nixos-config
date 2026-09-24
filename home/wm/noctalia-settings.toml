@@ -97,14 +97,14 @@ font_family = "Nunito"
     control_center_placement = "floating"
 
 [theme]
-builtin = "Tokyo-Night"
-community_palette = "Tokyo Night Storm"
+builtin = "Gruvbox"
+community_palette = "Everforest"
 mode = "dark"
 source = "builtin"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "niri", "qt" ]
+    builtin_ids = [ "alacritty", "niri", "gtk4", "qt" ]
 
 [wallpaper.default]
 path = "/home/alex/Pictures/disco.png"
