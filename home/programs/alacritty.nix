@@ -1,7 +1,6 @@
+{ hostname, ...}: 
+
 {
-  hostname,
-  ...
-}: {
   programs.alacritty = {
     enable = true;
 

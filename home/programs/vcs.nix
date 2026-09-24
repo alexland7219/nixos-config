@@ -1,8 +1,6 @@
-{
-  unstablePkgs,
-  ...
-}: {
+{ unstablePkgs, ...}:
 
+{
   # Jujutsu VCS btw
   programs.jujutsu = {
     enable   = true;

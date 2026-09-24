@@ -1,8 +1,7 @@
+{ unstablePkgs, pkgs, ...}: 
+
 {
-  unstablePkgs,
-  pkgs,
-  ...
-}: {
+  # Niri + Noctalia
   home.packages = [ unstablePkgs.noctalia ];
 
   xdg.configFile = {

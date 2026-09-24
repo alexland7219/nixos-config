@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: 
+{ pkgs, config, ...}: 
 
 let
   extensions = [
@@ -11,6 +7,7 @@ let
     "seventv-next@7tv.app"        # 7tv
   ];
 in
+
 {
   # Mozilla Thunderbird
   programs.thunderbird = {

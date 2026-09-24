@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./programs/zed.nix
     ./programs/vcs.nix

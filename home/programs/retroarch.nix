@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.retroarch = {
     enable = true;
 

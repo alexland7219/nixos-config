@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: 
+{ pkgs, config, ...}: 
 
 let
   qtctSettings = {
@@ -19,6 +15,7 @@ let
     };
   };
 in
+
 {
   # GTK theming
   gtk = {

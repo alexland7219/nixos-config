@@ -1,13 +1,12 @@
-{
-  pkgs,
-  ...
-}: {  
+{ pkgs, ...}: 
+
+{  
   programs.gpg = {
     enable = true;
     settings = {
       no-comments      = true;
       no-emit-version  = true;
-      keid-format      = "0xlong";
+      keyid-format     = "0xlong";
       with-fingerprint = true;
       keyserver        = "hkps://keys.openpgp.org";
     };

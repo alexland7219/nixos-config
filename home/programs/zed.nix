@@ -1,10 +1,6 @@
-{
-  pkgs,
-  hostname,
-  unstablePkgs,
-  ...
-}: {
+{ pkgs, hostname, unstablePkgs, ...}: 
 
+{
   # Zed IDE
   programs.zed-editor = {
     enable  = true;

@@ -1,9 +1,6 @@
+{ pkgs, unstablePkgs, ...}: 
+
 {
-  pkgs,
-  unstablePkgs,
-  ...
-}: {
-  
   # Default flags for special packages
   xdg.desktopEntries."dolphin-emu" = {
     name = "Dolphin Emulator";
@@ -77,6 +74,7 @@
       (python314.withPackages (
         ps: with ps; [
           apscheduler
+          asn1crypto
           discordpy
           geopandas
           matplotlib
