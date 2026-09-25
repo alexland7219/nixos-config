@@ -41,7 +41,12 @@
     binfmt = true;
   };
 
+  # ZSH shell
   programs.zsh.enable = true;
+
+  # Virtualisation
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
   # Run unpatched dynamic binaries
   programs.nix-ld.enable = true;

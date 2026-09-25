@@ -44,7 +44,6 @@
       };
   in {
     # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
     nixosConfigurations = {
       Termina = mkHost {
         hostname = "Termina";

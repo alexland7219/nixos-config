@@ -105,6 +105,7 @@
     shell = pkgs.zsh;
     extraGroups = [
       "audio"
+      "libvirtd"
       "lp"
       "networkmanager"
       "scanner"

@@ -12,7 +12,22 @@ in
   # Mozilla Thunderbird
   programs.thunderbird = {
     enable = true;
-    profiles.alex.isDefault = true;
+    profiles.default = {
+      isDefault = true;
+      settings  = {
+        "mail.threadpane.listview" = 0;
+        "mail.threadpane.cardsview.rowcount" = 2;
+        # Tags
+        "mailnews.tags.$label1.color" = "#FF0000";
+        "mailnews.tags.$label1.tag"   = "Important";
+        "mailnews.tags.$label2.color" = "#FF9900";
+        "mailnews.tags.$label2.tag"   = "Travel";
+        "mailnews.tags.$label3.color" = "#009900";
+        "mailnews.tags.$label3.tag"   = "Purchases or Delivery";
+        "mailnews.tags.$label4.color" = "#3333FF";
+        "mailnews.tags.$label4.tag"   = "Personal or Work";
+      };
+    };
   };
 
   # Mozilla Firefox
@@ -120,13 +135,13 @@ in
 
       # Applied to about:config
       settings = {
-        "browser.newtabpage.activity-stream.feeds.topsites"                = false;
-        "browser.newtabpage.activity-stream.hideLogo"                      = true;
+        "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        "browser.newtabpage.activity-stream.hideLogo" = true;
         "browser.newtabpage.activity-stream.newtabWallpapers.user.enabled" = true;
-        "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper"    = "dark-mountain";
-        "browser.newtabpage.activity-stream.showSearch"                    = false;
-        "browser.newtabpage.activity-stream.showWeather"                   = false;
-	"browser.toolbars.bookmarks.visibility"				   = "never";
+        "browser.newtabpage.activity-stream.newtabWallpapers.wallpaper" = "dark-mountain";
+        "browser.newtabpage.activity-stream.showSearch" = false;
+        "browser.newtabpage.activity-stream.showWeather" = false;
+       	"browser.toolbars.bookmarks.visibility" = "never";
       };
     };
   };
