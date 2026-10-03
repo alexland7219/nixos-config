@@ -48,6 +48,11 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  services.changedetection-io = {
+    enable = true;
+    port = 5000;
+  };
+
   # Run unpatched dynamic binaries
   programs.nix-ld.enable = true;
 }
