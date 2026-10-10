@@ -7,7 +7,6 @@
   # Import submodules
   imports = [
     ./programs.nix
-    ./grub-theme.nix
   ];
 
   # Lix
@@ -28,25 +27,22 @@
   # Use GRUB bootloader
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub = {
-    enable      = true;
-    efiSupport  = true;
-    device      = "nodev";
-    gfxmodeBios = "1920x1080";
-    gfxmodeEfi  = "1920x1080";
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    gfxmodeEfi = "1920x1080,auto";
+    configurationLimit = 20;
   };
 
   # Display Manager and Niri 
   programs.niri.enable = true;
-  services.greetd = {
+  services.displayManager.ly = {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet \
-          --time \
-          --remember \
-          --remember-user-session \
-          --cmd ${config.programs.niri.package}/bin/niri-session";
-      };
+      animation = "gameoflife";
+      bigclock = "de";
+      clock = "%a %d %b %H:%M";
+      save = true;
     };
   };
   
