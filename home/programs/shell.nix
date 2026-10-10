@@ -4,6 +4,7 @@
     enable = true;
     autocd = true;
     history.size = 1000;
+    defaultKeymap = "emacs";
     
     profileExtra = "export PATH=$HOME/nixos-config/scripts:$PATH";
     shellAliases = {

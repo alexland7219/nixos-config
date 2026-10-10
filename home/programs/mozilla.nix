@@ -126,10 +126,11 @@ in
             definedAliases = [ "@sx" ];
           };
 
-          "google".metaData.hidden = true;
-          "bing".metaData.hidden   = true;
-          "ecosia".metaData.hidden = true;
-          "qwant".metaData.hidden  = true;
+          "google".metaData.hidden     = true;
+          "bing".metaData.hidden       = true;
+          "ecosia".metaData.hidden     = true;
+          "qwant".metaData.hidden      = true;
+          "perplexity".metaData.hidden = true;
         };
       };
 

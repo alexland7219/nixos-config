@@ -1,17 +1,19 @@
 {
   imports = [
-    ./programs/zed.nix
-    ./programs/vcs.nix
-    ./programs/alacritty.nix
-    ./programs/gtk-qt.nix
-    ./programs/starship.nix
-    ./programs/shell.nix
-    ./programs/gnupg.nix
-    ./programs/mozilla.nix
-    ./programs/retroarch.nix
-    ./wm/wm.nix
-    ./packages.nix
     ./fonts.nix
+    ./packages.nix
+    ./programs/alacritty.nix
+    ./programs/gnupg.nix
+    ./programs/gtk-qt.nix
+    ./programs/mozilla.nix
+    ./programs/mpv.nix
+    ./programs/retroarch.nix
+    ./programs/shell.nix
+    ./programs/starship.nix
+    ./programs/vcs.nix
+    ./programs/wallpapers.nix
+    ./programs/zed.nix
+    ./wm/wm.nix
   ];
   
   xdg.userDirs = {

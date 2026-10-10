@@ -30,22 +30,18 @@
     enable = true;
     efiSupport = true;
     device = "nodev";
-    gfxmodeEfi = "1920x1080,auto";
+    gfxmodeEfi = "1024x768,auto";
     configurationLimit = 20;
   };
 
   # Display Manager and Niri 
   programs.niri.enable = true;
-  services.displayManager.ly = {
+  services.displayManager.sddm = {
     enable = true;
-    settings = {
-      animation = "gameoflife";
-      bigclock = "de";
-      clock = "%a %d %b %H:%M";
-      save = true;
-    };
+    theme = "sddm-astronaut";
+    wayland.enable = true;
   };
-  
+
   # Networking and Bluetooth
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
@@ -64,6 +60,9 @@
     layout = "us";
     variant = "intl";
   };
+
+  # Console font
+  console.font = "Lat2-Terminus16";
 
   # Time
   time.timeZone = "Europe/Brussels";

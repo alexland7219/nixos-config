@@ -330,6 +330,12 @@ window-rule {
     // block-out-from "screencast"
 }
 
+// Zed settings
+window-rule {
+    match title=r#"^Zed — Settings$"#
+    open-floating true
+}
+
 // Enable rounded corners for all windows
 window-rule {
     geometry-corner-radius 8

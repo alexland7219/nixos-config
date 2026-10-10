@@ -18,7 +18,7 @@
 
       font = {
         # On machine Hyrule the font needs to be smaller
-        size = if (hostname == "Hyrule") then 10.5 else 11;
+        size = if (hostname == "Hyrule") then 10 else 10.5;
         normal.family = "JetBrainsMonoNerdFontPropo";
       };
     };

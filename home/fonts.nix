@@ -10,6 +10,7 @@
     [
       bqn386
       geist-font
+      inter
       ioskeley-mono.normal-NF
       maple-mono.variable
       nerd-fonts.jetbrains-mono

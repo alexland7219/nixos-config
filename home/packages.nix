@@ -36,7 +36,6 @@
       love
       lua5_5_compat
       lynx
-      mpv
       mullvad-vpn
       newsboat
       nitch
@@ -58,10 +57,10 @@
       unstablePkgs.uiua-unstable
       unzip
       virt-viewer
-      vlc
       weechat
       wkhtmltopdf
       xournalpp
+      xwayland-satellite
       yt-dlp
       zulu
 

@@ -16,14 +16,14 @@
     userSettings =
       let
         fontsize = {
-          Hyrule  = { txt = 13; ui = 16; };
-          Termina = { txt = 14; ui = 17; };
+          Hyrule  = { txt = 12; ui = 15; };
+          Termina = { txt = 13; ui = 16; };
         }.${hostname};
       in
       {
         autosave.after_delay.milliseconds = 1000;
         base_keymap                       = "VSCode";
-        buffer_font_family                = "Ioskeley Mono";
+        buffer_font_family                = "JetBrainsMono Nerd Font";
         buffer_font_size                  = fontsize.txt;
         code_lens                         = "on";
         cursor_blink                      = true;
